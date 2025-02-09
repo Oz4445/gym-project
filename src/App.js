@@ -141,14 +141,14 @@ function App() {
                 {/* Sección multimedia */}
                 <MediaSection>
                   <GymVideo autoPlay loop muted>
-                    <source src="/img/gym-video.mp4" type="video/mp4" />
+                    <source src={`${process.env.PUBLIC_URL}/img/gym-video.mp4`} type="video/mp4" />
                     Tu navegador no soporta el video.
                   </GymVideo>
                   <GalleryContainer>
-                    <GymImage src="/img/gym1.jpg" alt="Interior del gimnasio 1" />
-                    <GymImage src="/img/gym2.jpg" alt="Interior del gimnasio 2" />
-                    <GymImage src="/img/gym3.jpg" alt="Interior del gimnasio 3" />
-                    <GymImage src="/img/gym4.jpg" alt="Interior del gimnasio 4" />
+                    <GymImage src={`${process.env.PUBLIC_URL}/img/gym1.jpg`} alt="Interior del gimnasio 1" />
+                    <GymImage src={`${process.env.PUBLIC_URL}/img/gym2.jpg`} alt="Interior del gimnasio 2" />
+                    <GymImage src={`${process.env.PUBLIC_URL}/img/gym3.jpg`} alt="Interior del gimnasio 3" />
+                    <GymImage src={`${process.env.PUBLIC_URL}/img/gym4.jpg`} alt="Interior del gimnasio 4" />
                   </GalleryContainer>
                 </MediaSection>
 
@@ -157,21 +157,21 @@ function App() {
                   <h2 style={{ color: "#00ff00" }}>Nuestros Productos</h2>
                   <ProductGrid>
                     <ProductCard>
-                      <ProductImage src="/img/protein.jpg" alt="Proteína en Polvo" />
+                      <ProductImage src={`${process.env.PUBLIC_URL}/img/protein.jpg`} alt="Proteína en Polvo" />
                       <h3 style={{ color: "#00ff00" }}>Proteína en Polvo</h3>
                       <p>Mejora tu rendimiento y recuperación muscular.</p>
                       <BuyButton>Comprar</BuyButton>
                     </ProductCard>
 
                     <ProductCard>
-                      <ProductImage src="/img/gloves.jpg" alt="Guantes de Gimnasio" />
+                      <ProductImage src={`${process.env.PUBLIC_URL}/img/gloves.jpg`} alt="Guantes de Gimnasio" />
                       <h3 style={{ color: "#00ff00" }}>Guantes de Gimnasio</h3>
                       <p>Protege tus manos durante los entrenamientos.</p>
                       <BuyButton>Comprar</BuyButton>
                     </ProductCard>
 
                     <ProductCard>
-                      <ProductImage src="/img/shaker.jpg" alt="Shaker para Batidos" />
+                      <ProductImage src={`${process.env.PUBLIC_URL}/img/shaker.jpg`} alt="Shaker para Batidos" />
                       <h3 style={{ color: "#00ff00" }}>Shaker para Batidos</h3>
                       <p>Prepara y mezcla tus suplementos fácilmente.</p>
                       <BuyButton>Comprar</BuyButton>

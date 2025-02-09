@@ -105,17 +105,17 @@ const Header = () => {
   return (
     <HeaderContainer>
       <LogoContainer>
-        <Logo src="/img/logo.jpg" alt="Logo de The Big Choco Gym" />
+        <Logo src={`${process.env.PUBLIC_URL}/img/logo.jpg`} alt="Logo de The Big Choco Gym" />
         <Title>The Big Choco Gym</Title>
       </LogoContainer>
       <Nav>
         <ul>
-          <li><Link to="/">Inicio</Link></li>
-          <li><Link to="/servicios">Servicios</Link></li>
-          <li><Link to="/planes">Planes</Link></li>
-          <li><Link to="/coaches">Coaches</Link></li>
-          <li><Link to="/nosotros">Nosotros</Link></li>
-          <li><Link to="/contacto">Contacto</Link></li>
+          <li><Link to={`${process.env.PUBLIC_URL}/`}>Inicio</Link></li>
+          <li><Link to={`${process.env.PUBLIC_URL}/servicios`}>Servicios</Link></li>
+          <li><Link to={`${process.env.PUBLIC_URL}/planes`}>Planes</Link></li>
+          <li><Link to={`${process.env.PUBLIC_URL}/coaches`}>Coaches</Link></li>
+          <li><Link to={`${process.env.PUBLIC_URL}/nosotros`}>Nosotros</Link></li>
+          <li><Link to={`${process.env.PUBLIC_URL}/contacto`}>Contacto</Link></li>
         </ul>
       </Nav>
     </HeaderContainer>

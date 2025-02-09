@@ -118,15 +118,15 @@ const Coaches = () => {
       <Title>Nuestros Coaches</Title>
       <CoachesContainer>
         <CoachCard>
-          <CoachImage src="/img/coach1.jpg" alt="Juan Pérez" />
+          <CoachImage src={`${process.env.PUBLIC_URL}/img/coach1.jpg`} alt="Juan Pérez" />
           Juan Pérez - Musculación
         </CoachCard>
         <CoachCard>
-          <CoachImage src="/img/coach2.jpg" alt="María Gómez" />
+          <CoachImage src={`${process.env.PUBLIC_URL}/img/coach2.jpg`} alt="María Gómez" />
           María Gómez - Yoga
         </CoachCard>
         <CoachCard>
-          <CoachImage src="/img/coach3.jpg" alt="Carlos Rodríguez" />
+          <CoachImage src={`${process.env.PUBLIC_URL}/img/coach3.jpg`} alt="Carlos Rodríguez" />
           Carlos Rodríguez - CrossFit
         </CoachCard>
       </CoachesContainer>

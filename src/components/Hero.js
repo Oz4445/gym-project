@@ -110,7 +110,7 @@ const Hero = () => {
   return (
     <HeroSection id="inicio">
       <HeroVideo autoPlay loop muted>
-        <source src="/assets/video.mp4" type="video/mp4" />
+        <source src={`${process.env.PUBLIC_URL}/assets/video.mp4`} type="video/mp4" />
       </HeroVideo>
       <HeroContent>
         <Title>Transforma tu cuerpo, transforma tu vida</Title>

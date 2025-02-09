@@ -42,7 +42,7 @@ const HamburgerButton = styled.button`
 
   ${({ show }) => show && "display: block;"} /* Se muestra en móviles */
 
-  ${({ open }) => open && "transform: rotate(90deg);"}
+  ${({ open }) => open && "transform: rotate(90deg);" }
 `;
 
 // 🔹 Fondo con blur cuando el menú está abierto
@@ -153,18 +153,18 @@ const NavBar = () => {
     <>
       <HeaderContainer>
         <LogoContainer>
-          <Logo src="/img/logo.jpg" alt="Logo de The Big Choco Gym" />
+          <Logo src={`${process.env.PUBLIC_URL}/img/logo.jpg`} alt="Logo de The Big Choco Gym" />
         </LogoContainer>
 
         {/* Menú de escritorio (visible en pantallas grandes) */}
         {!isMobile && (
           <DesktopNav>
             <DesktopLink to="/">Inicio</DesktopLink>
-            <DesktopLink to="/servicios">Servicios</DesktopLink>
-            <DesktopLink to="/planes">Planes</DesktopLink>
-            <DesktopLink to="/coaches">Coaches</DesktopLink>
-            <DesktopLink to="/nosotros">Nosotros</DesktopLink>
-            <DesktopLink to="/contacto">Contacto</DesktopLink>
+            <DesktopLink to="/gym-project/servicios">Servicios</DesktopLink>
+            <DesktopLink to="/gym-project/planes">Planes</DesktopLink>
+            <DesktopLink to="/gym-project/coaches">Coaches</DesktopLink>
+            <DesktopLink to="/gym-project/nosotros">Nosotros</DesktopLink>
+            <DesktopLink to="/gym-project/contacto">Contacto</DesktopLink>
           </DesktopNav>
         )}
 
@@ -187,12 +187,12 @@ const NavBar = () => {
       {isMobile && (
         <MobileMenu open={menuOpen}>
           <CloseButton onClick={() => setMenuOpen(false)}>✖</CloseButton>
-          <MenuItem to="/" onClick={() => setMenuOpen(false)}>Inicio</MenuItem>
-          <MenuItem to="/servicios" onClick={() => setMenuOpen(false)}>Servicios</MenuItem>
-          <MenuItem to="/planes" onClick={() => setMenuOpen(false)}>Planes</MenuItem>
-          <MenuItem to="/coaches" onClick={() => setMenuOpen(false)}>Coaches</MenuItem>
-          <MenuItem to="/nosotros" onClick={() => setMenuOpen(false)}>Nosotros</MenuItem>
-          <MenuItem to="/contacto" onClick={() => setMenuOpen(false)}>Contacto</MenuItem>
+          <MenuItem to="/gym-project/" onClick={() => setMenuOpen(false)}>Inicio</MenuItem>
+          <MenuItem to="/gym-project/servicios" onClick={() => setMenuOpen(false)}>Servicios</MenuItem>
+          <MenuItem to="/gym-project/planes" onClick={() => setMenuOpen(false)}>Planes</MenuItem>
+          <MenuItem to="/gym-project/coaches" onClick={() => setMenuOpen(false)}>Coaches</MenuItem>
+          <MenuItem to="/gym-project/nosotros" onClick={() => setMenuOpen(false)}>Nosotros</MenuItem>
+          <MenuItem to="/gym-project/contacto" onClick={() => setMenuOpen(false)}>Contacto</MenuItem>
         </MobileMenu>
       )}
     </>

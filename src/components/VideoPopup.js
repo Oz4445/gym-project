@@ -53,17 +53,17 @@ const CloseButton = styled.button`
 `;
 
 const Video = styled.video`
-  width: 85%;  /* Se agrandó aún más */
-  max-width: 1000px; /* Más grande en pantallas grandes */
+  width: 85%;
+  max-width: 1000px;
   border-radius: 12px;
   box-shadow: 0px 5px 15px rgba(0, 255, 0, 0.6);
 
   @media (max-width: 740px) {
-    width: 98%;  /* Más grande en tablets */
+    width: 98%;
   }
 
   @media (max-width: 355px) {
-    width: 100%;  /* Ocupar todo el ancho en celulares pequeños */
+    width: 100%;
   }
 `;
 
@@ -113,10 +113,9 @@ const VideoPopup = () => {
           videoRef.current.muted = true; // Se inicia silenciado para evitar bloqueo
           await videoRef.current.play(); // Intenta reproducir automáticamente
 
-          // Verificamos si el navegador bloqueó el sonido
           setTimeout(() => {
             if (videoRef.current.muted) {
-              setIsMuted(true); // Mostramos mensaje para activar sonido
+              setIsMuted(true);
             } else {
               setIsMuted(false);
             }
@@ -149,7 +148,7 @@ const VideoPopup = () => {
         <PopupContent>
           <CloseButton onClick={handleClose}>✖</CloseButton>
           <Video ref={videoRef} autoPlay playsInline muted onEnded={handleClose}>
-            <source src="/img/intro-video.mp4" type="video/mp4" />
+            <source src={`${process.env.PUBLIC_URL}/img/intro-video.mp4`} type="video/mp4" />
             Tu navegador no soporta videos.
           </Video>
           {isMuted && <UnmuteMessage onClick={handleUnmute}>🔊 Activar sonido</UnmuteMessage>}
