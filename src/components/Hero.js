@@ -12,15 +12,15 @@ const HeroSection = styled.section`
   justify-content: center;
   text-align: center;
   color: white;
-  padding: 0 2rem; /* Agregamos padding lateral */
+  padding: 0 2rem;
 
   @media (max-width: 740px) {
-    height: 90vh; /* Reducimos un poco la altura en tablets */
+    height: 90vh;
     padding: 0 1.5rem;
   }
 
   @media (max-width: 355px) {
-    height: 80vh; /* Reducimos más en móviles pequeños */
+    height: 80vh;
     padding: 0 1rem;
   }
 `;
@@ -41,15 +41,15 @@ const HeroContent = styled.div`
   background: rgba(0, 0, 0, 0.6);
   padding: 2rem;
   border-radius: 10px;
-  max-width: 800px; /* Limitar el ancho */
+  max-width: 800px;
 
   @media (max-width: 740px) {
-    padding: 1.5rem; /* Menos padding en tablets */
+    padding: 1.5rem;
     max-width: 600px;
   }
 
   @media (max-width: 355px) {
-    padding: 1rem; /* Aún menos en móviles */
+    padding: 1rem;
     max-width: 90%;
   }
 `;
@@ -59,11 +59,11 @@ const Title = styled.h2`
   margin-bottom: 1rem;
 
   @media (max-width: 740px) {
-    font-size: 2.5rem; /* Más pequeño en tablets */
+    font-size: 2.5rem;
   }
 
   @media (max-width: 355px) {
-    font-size: 2rem; /* Aún más pequeño en móviles */
+    font-size: 2rem;
   }
 `;
 
@@ -72,11 +72,11 @@ const Paragraph = styled.p`
   margin-bottom: 1.5rem;
 
   @media (max-width: 740px) {
-    font-size: 1.1rem; /* Más pequeño en tablets */
+    font-size: 1.1rem;
   }
 
   @media (max-width: 355px) {
-    font-size: 1rem; /* Aún más pequeño en móviles */
+    font-size: 1rem;
   }
 `;
 
@@ -95,12 +95,12 @@ const Button = styled.a`
   }
 
   @media (max-width: 740px) {
-    font-size: 1rem; /* Más pequeño en tablets */
+    font-size: 1rem;
     padding: 0.7rem 1.3rem;
   }
 
   @media (max-width: 355px) {
-    font-size: 0.9rem; /* Aún más pequeño en móviles */
+    font-size: 0.9rem;
     padding: 0.6rem 1.2rem;
   }
 `;
@@ -109,8 +109,8 @@ const Button = styled.a`
 const Hero = () => {
   return (
     <HeroSection id="inicio">
-      <HeroVideo autoPlay loop muted>
-        <source src={`${process.env.PUBLIC_URL}/assets/video.mp4`} type="video/mp4" />
+      <HeroVideo autoPlay loop muted aria-hidden="true">
+        <source src="/assets/video.mp4" type="video/mp4" />
       </HeroVideo>
       <HeroContent>
         <Title>Transforma tu cuerpo, transforma tu vida</Title>

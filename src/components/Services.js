@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+// 🔹 Estilos usando Styled Components
 const Section = styled.section`
   background: black;
   color: white;
@@ -9,11 +10,11 @@ const Section = styled.section`
   min-height: 100vh;
 
   @media (max-width: 740px) {
-    padding: 3rem 1.5rem; /* Menos padding en tablets */
+    padding: 3rem 1.5rem;
   }
 
   @media (max-width: 355px) {
-    padding: 2rem 1rem; /* Menos padding en móviles pequeños */
+    padding: 2rem 1rem;
   }
 `;
 
@@ -23,68 +24,104 @@ const Title = styled.h2`
   color: #00ff00;
 
   @media (max-width: 740px) {
-    font-size: 2.2rem; /* Más pequeño en tablets */
+    font-size: 2.2rem;
   }
 
   @media (max-width: 355px) {
-    font-size: 2rem; /* Más pequeño en móviles */
+    font-size: 2rem;
   }
 `;
 
 const ServicesContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  align-items: center;
   flex-wrap: wrap;
+  gap: 2rem;
 
   @media (max-width: 740px) {
-    gap: 1.5rem; /* Menos espacio entre tarjetas en tablets */
+    gap: 1.5rem;
   }
 
   @media (max-width: 355px) {
-    gap: 1rem; /* Aún menos en móviles pequeños */
+    gap: 1rem;
   }
 `;
 
 const ServiceCard = styled.div`
-  background: #121212;
+  background: #1a1a1a;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 255, 0, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 255, 0, 0.6);
   font-size: 1.2rem;
-  width: 250px;
+  width: 270px;
   text-align: center;
   font-weight: bold;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 255, 0, 0.9);
+    box-shadow: 0 6px 12px rgba(0, 255, 0, 0.8);
   }
 
   @media (max-width: 740px) {
-    width: 220px; /* Más pequeñas en tablets */
+    width: 240px;
     padding: 1.5rem;
     font-size: 1.1rem;
   }
 
   @media (max-width: 355px) {
-    width: 90%; /* Ocupa casi todo el ancho en móviles */
+    width: 90%;
     padding: 1.2rem;
     font-size: 1rem;
   }
 `;
 
+const ServiceTitle = styled.h3`
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #00ff00;
+`;
+
+const ServiceDescription = styled.p`
+  font-size: 1rem;
+  font-weight: normal;
+  color: #ccc;
+`;
+
 // 🔹 Componente Services
 const Services = () => {
   return (
-    <Section id="servicios">
-      <Title>Nuestros Servicios</Title>
+    <Section id="servicios" aria-labelledby="title-servicios">
+      <Title id="title-servicios">Nuestros Servicios</Title>
       <ServicesContainer>
-        <ServiceCard>Entrenamiento Personalizado</ServiceCard>
-        <ServiceCard>Clases Grupales</ServiceCard>
-        <ServiceCard>Asesoramiento Nutricional</ServiceCard>
-        <ServiceCard>Áreas de Pesas y Cardio</ServiceCard>
+        <ServiceCard>
+          <ServiceTitle>Entrenamiento Personalizado</ServiceTitle>
+          <ServiceDescription>
+            Recibe una rutina diseñada especialmente para ti con el apoyo de un entrenador experto.
+          </ServiceDescription>
+        </ServiceCard>
+
+        <ServiceCard>
+          <ServiceTitle>Clases Grupales</ServiceTitle>
+          <ServiceDescription>
+            Disfruta de sesiones de entrenamiento en grupo con diferentes niveles de intensidad.
+          </ServiceDescription>
+        </ServiceCard>
+
+        <ServiceCard>
+          <ServiceTitle>Asesoramiento Nutricional</ServiceTitle>
+          <ServiceDescription>
+            Aprende a mejorar tu alimentación con nuestros especialistas en nutrición deportiva.
+          </ServiceDescription>
+        </ServiceCard>
+
+        <ServiceCard>
+          <ServiceTitle>Áreas de Pesas y Cardio</ServiceTitle>
+          <ServiceDescription>
+            Accede a nuestra amplia zona de entrenamiento con equipo de última generación.
+          </ServiceDescription>
+        </ServiceCard>
       </ServicesContainer>
     </Section>
   );

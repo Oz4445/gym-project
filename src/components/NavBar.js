@@ -29,20 +29,18 @@ const Logo = styled.img`
   }
 `;
 
-// 🔹 Botón de hamburguesa (visible solo en celulares)
+// 🔹 Botón de hamburguesa (visible solo en móviles)
 const HamburgerButton = styled.button`
   background: transparent;
   border: none;
   font-size: 30px;
-  color: #00ff00; /* Verde neón */
+  color: #00ff00;
   cursor: pointer;
   z-index: 2100;
   transition: transform 0.3s ease-in-out;
-  display: none; /* Oculto por defecto */
+  display: ${({ show }) => (show ? "block" : "none")};
 
-  ${({ show }) => show && "display: block;"} /* Se muestra en móviles */
-
-  ${({ open }) => open && "transform: rotate(90deg);" }
+  ${({ open }) => open && "transform: rotate(90deg);"}
 `;
 
 // 🔹 Fondo con blur cuando el menú está abierto
@@ -59,20 +57,20 @@ const Overlay = styled.div`
   z-index: ${({ open }) => (open ? "999" : "-1")};
 `;
 
-// 🔹 Menú móvil con efecto Zoom (visible solo en celulares)
+// 🔹 Menú móvil con transición de desplazamiento
 const MobileMenu = styled.nav`
   position: fixed;
   top: 0;
-  left: ${({ open }) => (open ? "50%" : "150%")};
-  transform: translate(-50%, 0) scale(${({ open }) => (open ? "1" : "0.8")});
-  width: 100%;
+  right: 0;
+  width: 80%;
   height: 100%;
   background: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: left 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transform: translateX(${({ open }) => (open ? "0" : "100%")});
+  transition: transform 0.3s ease-in-out;
   z-index: 1000;
 
   @media (min-width: 741px) {
@@ -80,7 +78,7 @@ const MobileMenu = styled.nav`
   }
 `;
 
-// 🔹 Menú de escritorio (visible solo en pantallas grandes)
+// 🔹 Menú de escritorio (visible en pantallas grandes)
 const DesktopNav = styled.nav`
   display: flex;
   gap: 2rem;
@@ -90,7 +88,7 @@ const DesktopNav = styled.nav`
   }
 `;
 
-const DesktopLink = styled(Link)`
+const NavLink = styled(Link)`
   color: #00ff00;
   text-decoration: none;
   font-size: 1.3rem;
@@ -109,7 +107,7 @@ const CloseButton = styled.button`
   background: transparent;
   border: none;
   font-size: 35px;
-  color: #00ff00; /* Verde neón */
+  color: #00ff00;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 
@@ -119,32 +117,15 @@ const CloseButton = styled.button`
   }
 `;
 
-// 🔹 Luz neón en los textos del menú
-const MenuItem = styled(Link)`
-  color: #00ff00; /* Verde neón */
-  text-decoration: none;
-  font-size: 2rem;
-  margin: 1rem 0;
-  font-weight: bold;
-  transition: text-shadow 0.3s ease-in-out;
-
-  &:hover {
-    text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
-    color: #00cc00;
-  }
-`;
-
 // 🔹 Componente principal
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 740);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Detectar si es móvil al cambiar el tamaño de la pantalla
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 740);
-    };
-
+    const handleResize = () => setIsMobile(window.innerWidth <= 740);
+    handleResize(); // Ejecutar al cargar
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -153,28 +134,24 @@ const NavBar = () => {
     <>
       <HeaderContainer>
         <LogoContainer>
-          <Logo src={`${process.env.PUBLIC_URL}/img/logo.jpg`} alt="Logo de The Big Choco Gym" />
+          <Logo src="/img/logo.jpg" alt="Logo de The Big Choco Gym" />
         </LogoContainer>
 
-        {/* Menú de escritorio (visible en pantallas grandes) */}
+        {/* Menú de escritorio */}
         {!isMobile && (
           <DesktopNav>
-            <DesktopLink to="/">Inicio</DesktopLink>
-            <DesktopLink to="/gym-project/servicios">Servicios</DesktopLink>
-            <DesktopLink to="/gym-project/planes">Planes</DesktopLink>
-            <DesktopLink to="/gym-project/coaches">Coaches</DesktopLink>
-            <DesktopLink to="/gym-project/nosotros">Nosotros</DesktopLink>
-            <DesktopLink to="/gym-project/contacto">Contacto</DesktopLink>
+            <NavLink to="/">Inicio</NavLink>
+            <NavLink to="/servicios">Servicios</NavLink>
+            <NavLink to="/planes">Planes</NavLink>
+            <NavLink to="/coaches">Coaches</NavLink>
+            <NavLink to="/nosotros">Nosotros</NavLink>
+            <NavLink to="/contacto">Contacto</NavLink>
           </DesktopNav>
         )}
 
-        {/* Botón de hamburguesa (solo visible en móviles) */}
+        {/* Botón de hamburguesa (solo en móviles) */}
         {isMobile && (
-          <HamburgerButton
-            show={isMobile}
-            open={menuOpen}
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
+          <HamburgerButton show={isMobile} open={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
             ☰
           </HamburgerButton>
         )}
@@ -183,16 +160,16 @@ const NavBar = () => {
       {/* Fondo con blur cuando el menú está abierto */}
       <Overlay open={menuOpen} onClick={() => setMenuOpen(false)} />
 
-      {/* Menú móvil con zoom (solo en celulares) */}
+      {/* Menú móvil con desplazamiento */}
       {isMobile && (
         <MobileMenu open={menuOpen}>
           <CloseButton onClick={() => setMenuOpen(false)}>✖</CloseButton>
-          <MenuItem to="/gym-project/" onClick={() => setMenuOpen(false)}>Inicio</MenuItem>
-          <MenuItem to="/gym-project/servicios" onClick={() => setMenuOpen(false)}>Servicios</MenuItem>
-          <MenuItem to="/gym-project/planes" onClick={() => setMenuOpen(false)}>Planes</MenuItem>
-          <MenuItem to="/gym-project/coaches" onClick={() => setMenuOpen(false)}>Coaches</MenuItem>
-          <MenuItem to="/gym-project/nosotros" onClick={() => setMenuOpen(false)}>Nosotros</MenuItem>
-          <MenuItem to="/gym-project/contacto" onClick={() => setMenuOpen(false)}>Contacto</MenuItem>
+          <NavLink to="/" onClick={() => setMenuOpen(false)}>Inicio</NavLink>
+          <NavLink to="/servicios" onClick={() => setMenuOpen(false)}>Servicios</NavLink>
+          <NavLink to="/planes" onClick={() => setMenuOpen(false)}>Planes</NavLink>
+          <NavLink to="/coaches" onClick={() => setMenuOpen(false)}>Coaches</NavLink>
+          <NavLink to="/nosotros" onClick={() => setMenuOpen(false)}>Nosotros</NavLink>
+          <NavLink to="/contacto" onClick={() => setMenuOpen(false)}>Contacto</NavLink>
         </MobileMenu>
       )}
     </>
